@@ -57,6 +57,9 @@ extern "C" {
     int CCustBase64_Encode(const char * pData, int nDataLen, wchar_t szOutBuffer[], int nBufferLen) {
        return CCustBase64::Encode(pData,nDataLen,szOutBuffer,nBufferLen);
     };
+    int CCustBase64_Decode(const wchar_t * pszCode, int nCodeLength,wchar_t szOutBuffer[], int nBufferLen) {
+        return CCustBase64::Decode(pszCode,nCodeLength,szOutBuffer,nBufferLen);
+    };
 #ifdef __cplusplus
 }
 #endif

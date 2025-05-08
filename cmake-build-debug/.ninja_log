@@ -64,3 +64,9 @@
 291	305	1746692736504016632	CMakeFiles/core.dir/cust_bash64.cpp.o.modmap	bb6cacdcb07c689d
 305	1783	1746692736506059984	CMakeFiles/core.dir/cust_bash64.cpp.o	937013c07b789d13
 1783	1971	1746692737984062756	libcore.so	ec253a865f845ffe
+27	515	1746696195543544922	CMakeFiles/core.dir/cust_bash64.cpp.o.ddi	846fa6ab66630b5a
+517	535	1746696196033551230	CMakeFiles/core.dir/CXX.dd	bb6cacdcb07c689d
+517	535	1746696196033551230	/home/dev/Desktop/code/core/cmake-build-debug/CMakeFiles/core.dir/CXXModules.json	bb6cacdcb07c689d
+517	535	1746696196033551230	CMakeFiles/core.dir/cust_bash64.cpp.o.modmap	bb6cacdcb07c689d
+536	2708	1746696196052551474	CMakeFiles/core.dir/cust_bash64.cpp.o	937013c07b789d13
+2709	2924	1746696198226579451	libcore.so	ec253a865f845ffe
