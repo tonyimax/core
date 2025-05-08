@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.31)
 project(core)
 
 set(CMAKE_CXX_STANDARD 20)
+
+
 set(GOOGLE_TEST OFF)
 if (GOOGLE_TEST)
     include(FetchContent)
@@ -18,3 +20,5 @@ endif ()
 add_library(core SHARED cust_bash64.cpp
         platform_export.h)
 
+#-fPIC
+set_property(TARGET ${PROJECT_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)

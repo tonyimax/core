@@ -1,5 +1,5 @@
 #include "cust_bash64.h"
-#include <iostream>
+
 
 inline int GetDataLength(int nCodeLength)
 {
@@ -121,5 +121,5 @@ int CCustBase64::Decode(const wchar_t * pszCode, int nCodeLength, wchar_t szOutB
 }
 
 void Test() {
-	std::cout<<"===>Test Export Function to .so for C# call it"<<std::endl;
+	std::cout<<"===>Test Export Function Test to .so for C# call it"<<std::endl;
 }

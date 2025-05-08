@@ -4,6 +4,7 @@
 #include <cstring>
 #include  <cstdlib>
 #include <cwchar>
+#include <iostream>
 #define LIB_EXPORTS 1
 #define SafeDeleteArray(pData) { try { delete [] pData; } catch (...) { assert(false); } pData=NULL; }
 #include "platform_export.h"
@@ -23,13 +24,29 @@ union unBuffer
     unsigned int block;
 };
 
+// #ifdef __cplusplus
+// extern "C" {
+// #endif
+
+    class LIB_API CCustBase64
+    {
+    public:
+        CCustBase64();
+        virtual ~CCustBase64();
+        static void Encode1(){};
+        static int Encode(const char * pData, int nDataLen, wchar_t szOutBuffer[], int nBufferLen);
+        static int Decode(const wchar_t * pszCode, int nCodeLength,wchar_t szOutBuffer[], int nBufferLen);
+
+    };
+
+// #ifdef __cplusplus
+// }
+// #endif
+
 extern "C" {
-class LIB_API CCustBase64
-{
-public:
-    CCustBase64();
-    virtual ~CCustBase64();
-    static char* w2c(const wchar_t* wc) {
+    void Test();
+    char* w2c(const wchar_t* wc) {
+        std::cout<<"===>Test Export Function w2c to .so for C# call it"<<std::endl;
         char* buf{nullptr};
         if (const size_t len = wcslen(wc) + 1; len>0) {
             buf = static_cast<char *>(malloc(len * sizeof(char)));
@@ -38,14 +55,6 @@ public:
         }
         return buf;
     }
-
-    static int Encode(const char * pData, int nDataLen, wchar_t szOutBuffer[], int nBufferLen);
-    static int Decode(const wchar_t * pszCode, int nCodeLength,wchar_t szOutBuffer[], int nBufferLen);
-
-};
-}
-extern "C" {
-    void Test();
 }
 
 #endif //CORE_LIBRARY_H
