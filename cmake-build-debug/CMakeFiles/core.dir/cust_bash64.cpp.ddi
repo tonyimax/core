@@ -1,0 +1,11 @@
+{
+"rules": [
+{
+"primary-output": "CMakeFiles/core.dir/cust_bash64.cpp.o",
+"requires": [
+]
+}
+],
+"version": 0,
+"revision": 0
+}

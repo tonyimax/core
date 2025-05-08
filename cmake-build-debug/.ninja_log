@@ -1,0 +1,15 @@
+# ninja log v6
+383	1843	1746603834341860395	CMakeFiles/core.dir/cust_bash64.cpp.o	a4f40c9d320ed6c3
+5	191	1746664931642493210	build.ninja	e6ab821a53482eb
+1843	1874	1746603835800903580	libcore.a	c6e02d5df93c354b
+366	383	1746603834322859832	CMakeFiles/core.dir/cust_bash64.cpp.o.modmap	be030c6b66082900
+366	383	1746603834322859832	CMakeFiles/core.dir/CXX.dd	be030c6b66082900
+366	383	1746603834322859832	/home/dev/Desktop/code/core/cmake-build-debug/CMakeFiles/core.dir/CXXModules.json	be030c6b66082900
+19	365	1746603833975849561	CMakeFiles/core.dir/cust_bash64.cpp.o.ddi	9e4bceda995b24cd
+19	47	1746599788749029446	clean	c88349c9cd4d65bc
+22	497	1746665431671116440	CMakeFiles/core.dir/cust_bash64.cpp.o.ddi	9e4bceda995b24cd
+497	510	1746665432158224313	CMakeFiles/core.dir/CXX.dd	bb6cacdcb07c689d
+497	510	1746665432158224313	/home/dev/Desktop/code/core/cmake-build-debug/CMakeFiles/core.dir/CXXModules.json	bb6cacdcb07c689d
+497	510	1746665432158224313	CMakeFiles/core.dir/cust_bash64.cpp.o.modmap	bb6cacdcb07c689d
+511	2369	1746665432159120813	CMakeFiles/core.dir/cust_bash64.cpp.o	a4f40c9d320ed6c3
+2371	2418	1746665434020137452	libcore.a	21a2b6fecb0b6a58

@@ -1,0 +1,1 @@
+cd cmake-build-debug && cmake --build . --target core -j 3 && ls *.a

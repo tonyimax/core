@@ -1,0 +1,27 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "GNU",
+	"compiler-id" : "GNU",
+	"compiler-simulate-id" : "",
+	"config" : "Debug",
+	"cxx-modules" : {},
+	"database-info" : null,
+	"dir-cur-bld" : "/home/dev/Desktop/code/core/cmake-build-debug",
+	"dir-cur-src" : "/home/dev/Desktop/code/core",
+	"dir-top-bld" : "/home/dev/Desktop/code/core/cmake-build-debug",
+	"dir-top-src" : "/home/dev/Desktop/code/core",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : [],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "/home/dev/Desktop/code/core/cmake-build-debug/CMakeFiles/core.dir",
+	"sources" : 
+	{
+		"CMakeFiles/core.dir/cust_bash64.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/dev/Desktop/code/core/cust_bash64.cpp"
+		}
+	}
+}
