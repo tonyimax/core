@@ -44196,26 +44196,20 @@ union unBuffer
     unsigned int block;
 };
 
+class __attribute__ ((visibility("default"))) CCustBase64
+{
+public:
+    CCustBase64();
+    virtual ~CCustBase64();
+    static void Encode1(){std::cout<<"===>Test Export Function Encode1 from CCustBase64 to .so for C# call it"<<std::endl;};
+    static int Encode(const char * pData, int nDataLen, wchar_t szOutBuffer[], int nBufferLen);
+    static int Decode(const wchar_t * pszCode, int nCodeLength,wchar_t szOutBuffer[], int nBufferLen);
 
-
-
-
-    class __attribute__ ((visibility("default"))) CCustBase64
-    {
-    public:
-        CCustBase64();
-        virtual ~CCustBase64();
-        static void Encode1(){};
-        static int Encode(const char * pData, int nDataLen, wchar_t szOutBuffer[], int nBufferLen);
-        static int Decode(const wchar_t * pszCode, int nCodeLength,wchar_t szOutBuffer[], int nBufferLen);
-
-    };
-
-
-
+};
 
 
 extern "C" {
+
     void Test();
     char* w2c(const wchar_t* wc) {
         std::cout<<"===>Test Export Function w2c to .so for C# call it"<<std::endl;
@@ -44227,6 +44221,15 @@ extern "C" {
         }
         return buf;
     }
+    inline CCustBase64* createObject(){return new CCustBase64();}
+
+    void CCustBase64_Encode1() {
+        CCustBase64::Encode1();
+    };
+    int CCustBase64_Encode(const char * pData, int nDataLen, wchar_t szOutBuffer[], int nBufferLen) {
+       return CCustBase64::Encode(pData,nDataLen,szOutBuffer,nBufferLen);
+    };
+
 }
 # 2 "/home/dev/Desktop/code/core/cust_bash64.cpp" 2
 
