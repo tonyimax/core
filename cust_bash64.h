@@ -23,6 +23,7 @@ union unBuffer
     unsigned int block;
 };
 
+extern "C" {
 class LIB_API CCustBase64
 {
 public:
@@ -40,7 +41,11 @@ public:
 
     static int Encode(const char * pData, int nDataLen, wchar_t szOutBuffer[], int nBufferLen);
     static int Decode(const wchar_t * pszCode, int nCodeLength,wchar_t szOutBuffer[], int nBufferLen);
-};
 
+};
+}
+extern "C" {
+    void Test();
+}
 
 #endif //CORE_LIBRARY_H

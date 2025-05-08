@@ -13,6 +13,8 @@ if (GOOGLE_TEST)
     FetchContent_MakeAvailable(googletest)
 endif ()
 
-add_library(core STATIC cust_bash64.cpp
+#add_library(core STATIC cust_bash64.cpp
+#        platform_export.h)
+add_library(core SHARED cust_bash64.cpp
         platform_export.h)
 

@@ -119,3 +119,7 @@ int CCustBase64::Decode(const wchar_t * pszCode, int nCodeLength, wchar_t szOutB
 	SafeDeleteArray(pOutData);
 	return j;
 }
+
+void Test() {
+	std::cout<<"===>Test Export Function to .so for C# call it"<<std::endl;
+}
