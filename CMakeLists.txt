@@ -18,7 +18,9 @@ endif ()
 #add_library(core STATIC cust_bash64.cpp
 #        platform_export.h)
 add_library(core SHARED cust_bash64.cpp
-        platform_export.h)
+        platform_export.h
+        cust_md5.cpp
+        cust_md5.h)
 
 #-fPIC
 set_property(TARGET ${PROJECT_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)

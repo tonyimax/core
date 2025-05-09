@@ -66,7 +66,24 @@ build CMakeFiles/core.dir/cust_bash64.cpp.o: CXX_COMPILER__core_scanned_Debug /h
   OBJECT_FILE_DIR = CMakeFiles/core.dir
   dyndep = CMakeFiles/core.dir/CXX.dd
 
-build CMakeFiles/core.dir/CXX.dd | /home/dev/Desktop/code/core/cmake-build-debug/CMakeFiles/core.dir/CXXModules.json CMakeFiles/core.dir/cust_bash64.cpp.o.modmap: CXX_DYNDEP__core_Debug CMakeFiles/core.dir/cust_bash64.cpp.o.ddi | /home/dev/Desktop/code/core/cmake-build-debug/CMakeFiles/core.dir/CXXDependInfo.json
+build CMakeFiles/core.dir/cust_md5.cpp.o.ddi: CXX_SCAN__core_Debug /home/dev/Desktop/code/core/cust_md5.cpp || cmake_object_order_depends_target_core
+  DEFINES = -Dcore_EXPORTS
+  DEP_FILE = CMakeFiles/core.dir/cust_md5.cpp.o.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/core.dir/cust_md5.cpp.o.ddi
+  FLAGS = -g -std=gnu++20 -fPIC -fdiagnostics-color=always
+  OBJ_FILE = CMakeFiles/core.dir/cust_md5.cpp.o
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles/core.dir/cust_md5.cpp.o.ddi.i
+
+build CMakeFiles/core.dir/cust_md5.cpp.o: CXX_COMPILER__core_scanned_Debug /home/dev/Desktop/code/core/cust_md5.cpp | CMakeFiles/core.dir/cust_md5.cpp.o.modmap || cmake_object_order_depends_target_core CMakeFiles/core.dir/CXX.dd
+  DEFINES = -Dcore_EXPORTS
+  DEP_FILE = CMakeFiles/core.dir/cust_md5.cpp.o.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles/core.dir/cust_md5.cpp.o.modmap
+  FLAGS = -g -std=gnu++20 -fPIC -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/core.dir
+  OBJECT_FILE_DIR = CMakeFiles/core.dir
+  dyndep = CMakeFiles/core.dir/CXX.dd
+
+build CMakeFiles/core.dir/CXX.dd | /home/dev/Desktop/code/core/cmake-build-debug/CMakeFiles/core.dir/CXXModules.json CMakeFiles/core.dir/cust_bash64.cpp.o.modmap CMakeFiles/core.dir/cust_md5.cpp.o.modmap: CXX_DYNDEP__core_Debug CMakeFiles/core.dir/cust_bash64.cpp.o.ddi CMakeFiles/core.dir/cust_md5.cpp.o.ddi | /home/dev/Desktop/code/core/cmake-build-debug/CMakeFiles/core.dir/CXXDependInfo.json
 
 
 # =============================================================================
@@ -76,7 +93,7 @@ build CMakeFiles/core.dir/CXX.dd | /home/dev/Desktop/code/core/cmake-build-debug
 #############################################
 # Link the shared library libcore.so
 
-build libcore.so: CXX_SHARED_LIBRARY_LINKER__core_Debug CMakeFiles/core.dir/cust_bash64.cpp.o
+build libcore.so: CXX_SHARED_LIBRARY_LINKER__core_Debug CMakeFiles/core.dir/cust_bash64.cpp.o CMakeFiles/core.dir/cust_md5.cpp.o
   DEP_FILE = CMakeFiles/core.dir/link.d
   LANGUAGE_COMPILE_FLAGS = -g
   LINK_FLAGS = -Wl,--dependency-file=CMakeFiles/core.dir/link.d
