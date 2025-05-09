@@ -44204,7 +44204,7 @@ public:
     static void Encode1(){std::cout<<"===>Test Export Function Encode1 from CCustBase64 to .so for C# call it"<<std::endl;};
     static int Encode(const char * pData, int nDataLen, wchar_t szOutBuffer[], int nBufferLen);
     static int Decode(const wchar_t * pszCode, int nCodeLength,wchar_t szOutBuffer[], int nBufferLen);
-
+    static int Decode_CS(const char * pszCode, int nCodeLength,wchar_t szOutBuffer[], int nBufferLen);
 };
 
 
@@ -44212,7 +44212,7 @@ extern "C" {
 
     void Test();
     char* w2c(const wchar_t* wc) {
-        std::cout<<"===>Test Export Function w2c to .so for C# call it"<<std::endl;
+
         char* buf{nullptr};
         if (const size_t len = wcslen(wc) + 1; len>0) {
             buf = static_cast<char *>(malloc(len * sizeof(char)));
@@ -44231,6 +44231,9 @@ extern "C" {
     };
     int CCustBase64_Decode(const wchar_t * pszCode, int nCodeLength,wchar_t szOutBuffer[], int nBufferLen) {
         return CCustBase64::Decode(pszCode,nCodeLength,szOutBuffer,nBufferLen);
+    };
+    int CCustBase64_Decode_CS(const char * pszCode, int nCodeLength,wchar_t szOutBuffer[], int nBufferLen) {
+        return CCustBase64::Decode_CS(pszCode,nCodeLength,szOutBuffer,nBufferLen);
     };
 
 }
@@ -44328,6 +44331,7 @@ int CCustBase64::Decode(const wchar_t * pszCode, int nCodeLength, wchar_t szOutB
  unBuffer buffer;
  buffer.block = 0;
  wchar_t * pOutData = new wchar_t[nBufferLen];
+ printf("===> pszCode: %ls  nCodeLength: %d\n",pszCode,nCodeLength);
  int j = 0;
  for (int i = 0; i < nCodeLength; i++)
  {
@@ -44369,21 +44373,87 @@ int CCustBase64::Decode(const wchar_t * pszCode, int nCodeLength, wchar_t szOutB
  pOutData[j]=0;
  memcpy(szOutBuffer, pOutData,nBufferLen*sizeof(wchar_t));
  { try { delete [] pOutData; } catch (...) { 
-# 119 "/home/dev/Desktop/code/core/cust_bash64.cpp" 3 4
+# 120 "/home/dev/Desktop/code/core/cust_bash64.cpp" 3 4
 (static_cast <bool> (
-# 119 "/home/dev/Desktop/code/core/cust_bash64.cpp"
+# 120 "/home/dev/Desktop/code/core/cust_bash64.cpp"
 false
-# 119 "/home/dev/Desktop/code/core/cust_bash64.cpp" 3 4
+# 120 "/home/dev/Desktop/code/core/cust_bash64.cpp" 3 4
 ) ? void (0) : __assert_fail (
-# 119 "/home/dev/Desktop/code/core/cust_bash64.cpp"
+# 120 "/home/dev/Desktop/code/core/cust_bash64.cpp"
 "false"
-# 119 "/home/dev/Desktop/code/core/cust_bash64.cpp" 3 4
+# 120 "/home/dev/Desktop/code/core/cust_bash64.cpp" 3 4
 , __builtin_FILE (), __builtin_LINE (), __extension__ __PRETTY_FUNCTION__))
-# 119 "/home/dev/Desktop/code/core/cust_bash64.cpp"
+# 120 "/home/dev/Desktop/code/core/cust_bash64.cpp"
 ; } pOutData=
-# 119 "/home/dev/Desktop/code/core/cust_bash64.cpp" 3 4
+# 120 "/home/dev/Desktop/code/core/cust_bash64.cpp" 3 4
 __null
-# 119 "/home/dev/Desktop/code/core/cust_bash64.cpp"
+# 120 "/home/dev/Desktop/code/core/cust_bash64.cpp"
+; };
+ return j;
+}
+
+int CCustBase64::Decode_CS(const char * pszCode, int nCodeLength, wchar_t szOutBuffer[], int nBufferLen)
+{
+ unBuffer buffer;
+ buffer.block = 0;
+ wchar_t * pOutData = new wchar_t[nBufferLen];
+ printf("===> pszCode: %ls  nCodeLength: %d\n",pszCode,nCodeLength);
+ int j = 0;
+ for (int i = 0; i < nCodeLength; i++)
+ {
+  int val = 0;
+  int m = i % 4;
+  wchar_t x = pszCode[i];
+
+  if( x >= 'A' && x <= 'Z' )
+   val = x - 'A';
+  else if( x >= 'a' && x <= 'z' )
+   val = x - 'a' + 'Z' - 'A' + 1;
+  else if( x >= '0' && x <= '9' )
+   val = x - '0' + ( 'Z' - 'A' + 1 ) * 2;
+  else if( x == CHAR_63 )
+   val = 62;
+  else if( x == CHAR_64 )
+   val = 63;
+
+  if( x != CHAR_PAD )
+   buffer.block |= val << ( 3 - m ) * 6;
+  else
+   m--;
+
+  if (m == 3 || x == CHAR_PAD)
+  {
+   pOutData[ j++ ] = buffer.bytes[2];
+   if ( x != CHAR_PAD || m > 1 )
+   {
+    pOutData[ j++ ] = buffer.bytes[ 1 ];
+    if( x != CHAR_PAD || m > 2 ) pOutData[ j++ ] = buffer.bytes[ 0 ];
+   }
+
+   buffer.block = 0;
+  }
+
+  if (x == CHAR_PAD) break;
+  if (j == nBufferLen) break;
+ }
+ pOutData[j]=0;
+ memcpy(szOutBuffer, pOutData,nBufferLen*sizeof(wchar_t));
+ { try { delete [] pOutData; } catch (...) { 
+# 170 "/home/dev/Desktop/code/core/cust_bash64.cpp" 3 4
+(static_cast <bool> (
+# 170 "/home/dev/Desktop/code/core/cust_bash64.cpp"
+false
+# 170 "/home/dev/Desktop/code/core/cust_bash64.cpp" 3 4
+) ? void (0) : __assert_fail (
+# 170 "/home/dev/Desktop/code/core/cust_bash64.cpp"
+"false"
+# 170 "/home/dev/Desktop/code/core/cust_bash64.cpp" 3 4
+, __builtin_FILE (), __builtin_LINE (), __extension__ __PRETTY_FUNCTION__))
+# 170 "/home/dev/Desktop/code/core/cust_bash64.cpp"
+; } pOutData=
+# 170 "/home/dev/Desktop/code/core/cust_bash64.cpp" 3 4
+__null
+# 170 "/home/dev/Desktop/code/core/cust_bash64.cpp"
 ; };
  return j;
 }

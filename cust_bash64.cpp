@@ -76,6 +76,57 @@ int CCustBase64::Decode(const wchar_t * pszCode, int nCodeLength, wchar_t szOutB
 	unBuffer buffer;
 	buffer.block = 0;
 	wchar_t * pOutData = new wchar_t[nBufferLen];
+	printf("===> pszCode: %ls  nCodeLength: %d\n",pszCode,nCodeLength);
+	int j = 0;
+	for (int i = 0; i < nCodeLength; i++)
+	{
+		int val = 0;
+		int m = i % 4;
+		wchar_t x = pszCode[i];
+
+		if( x >= 'A' && x <= 'Z' )
+			val = x - 'A';
+		else if( x >= 'a' && x <= 'z' )
+			val = x - 'a' + 'Z' - 'A' + 1;
+		else if( x >= '0' && x <= '9' )
+			val = x - '0' + ( 'Z' - 'A' + 1 ) * 2;
+		else if( x == CHAR_63 )
+			val = 62;
+		else if( x == CHAR_64 )
+			val = 63;
+
+		if( x != CHAR_PAD )
+			buffer.block |= val << ( 3 - m ) * 6;
+		else
+			m--;
+
+		if (m == 3 || x == CHAR_PAD)
+		{
+			pOutData[ j++ ] = buffer.bytes[2];
+			if ( x != CHAR_PAD || m > 1 )
+			{
+				pOutData[ j++ ] = buffer.bytes[ 1 ];
+				if( x != CHAR_PAD || m > 2 ) pOutData[ j++ ] = buffer.bytes[ 0 ];
+			}
+
+			buffer.block = 0;
+		}
+
+		if (x == CHAR_PAD) break;
+		if (j == nBufferLen) break;
+	}
+	pOutData[j]=0;
+	memcpy(szOutBuffer, pOutData,nBufferLen*sizeof(wchar_t));
+	SafeDeleteArray(pOutData);
+	return j;
+}
+
+int CCustBase64::Decode_CS(const char * pszCode, int nCodeLength, wchar_t szOutBuffer[], int nBufferLen)
+{
+	unBuffer buffer;
+	buffer.block = 0;
+	wchar_t * pOutData = new wchar_t[nBufferLen];
+	printf("===> pszCode: %ls  nCodeLength: %d\n",pszCode,nCodeLength);
 	int j = 0;
 	for (int i = 0; i < nCodeLength; i++)
 	{

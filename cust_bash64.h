@@ -32,7 +32,7 @@ public:
     static void Encode1(){std::cout<<"===>Test Export Function Encode1 from CCustBase64 to .so for C# call it"<<std::endl;};
     static int Encode(const char * pData, int nDataLen, wchar_t szOutBuffer[], int nBufferLen);
     static int Decode(const wchar_t * pszCode, int nCodeLength,wchar_t szOutBuffer[], int nBufferLen);
-
+    static int Decode_CS(const char * pszCode, int nCodeLength,wchar_t szOutBuffer[], int nBufferLen);
 };
 
 #ifdef __cplusplus
@@ -40,7 +40,7 @@ extern "C" {
 #endif
     void Test();
     char* w2c(const wchar_t* wc) {
-        std::cout<<"===>Test Export Function w2c to .so for C# call it"<<std::endl;
+        //std::cout<<"===>Test Export Function w2c to .so for C# call it "<<std::endl;
         char* buf{nullptr};
         if (const size_t len = wcslen(wc) + 1; len>0) {
             buf = static_cast<char *>(malloc(len * sizeof(char)));
@@ -59,6 +59,9 @@ extern "C" {
     };
     int CCustBase64_Decode(const wchar_t * pszCode, int nCodeLength,wchar_t szOutBuffer[], int nBufferLen) {
         return CCustBase64::Decode(pszCode,nCodeLength,szOutBuffer,nBufferLen);
+    };
+    int CCustBase64_Decode_CS(const char * pszCode, int nCodeLength,wchar_t szOutBuffer[], int nBufferLen) {
+        return CCustBase64::Decode_CS(pszCode,nCodeLength,szOutBuffer,nBufferLen);
     };
 #ifdef __cplusplus
 }
